@@ -11,4 +11,9 @@ void MyFinances::registration()
 void MyFinances::logIn()
 {
     userManager.logIn();
+    if (userManager.isUserLogedIn())
+    {
+        new TransactionManager();
+        cout << "dobrze zalogowany" << endl;
+    }
 }

@@ -16,7 +16,6 @@ public:
     static int convertStringToInt(string integer);
     static char loadCharacter();
     static string replaceFirstLetterUpperRemainsLower(string text);
-
 };
 
 #endif

@@ -108,3 +108,12 @@ int UserManager::logIn()
     system("pause");
     return 0;
 }
+
+bool UserManager::isUserLogedIn()
+{
+    if (logedInUserId > 0)
+        return true;
+    else
+        return false;
+}
+
