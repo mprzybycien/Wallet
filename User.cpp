@@ -1,6 +1,5 @@
 #include "User.h"
 
-
 void User::setId(int newId)
 {
     if (newId >= 0)

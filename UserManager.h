@@ -25,8 +25,10 @@ class UserManager
         users = usersFile.loadUsersFromFile();
         logedInUserId = 0;
     }
+    bool isUserLogedIn();
     void registration();
     int logIn();
+    int getLogedInUserId();
 };
 
 #endif

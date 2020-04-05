@@ -77,7 +77,7 @@ int UserManager::logIn()
 {
     string log = "", pass = "";
 
-    cout << endl << "Podaj login: ";
+    cout << "Podaj login: ";
     log = GeneralMethods::insertTextLine();
 
     vector <User>::iterator itr = users.begin();
@@ -107,4 +107,17 @@ int UserManager::logIn()
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
     return 0;
+}
+
+bool UserManager::isUserLogedIn()
+{
+    if (logedInUserId > 0)
+        return true;
+    else
+        return false;
+}
+
+int UserManager::getLogedInUserId()
+{
+    return logedInUserId;
 }

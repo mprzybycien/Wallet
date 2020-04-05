@@ -3,18 +3,30 @@
 
 #include <iostream>
 #include "UserManager.h"
+#include "TransactionManager.h"
 
 using namespace std;
 
 class MyFinances
 {
     UserManager userManager;
+    TransactionManager *transactionManager;
 
     public:
-    MyFinances( string usersFileName):userManager(usersFileName){};
+    MyFinances(string usersFileName):userManager(usersFileName)
+    {
+        transactionManager = NULL;
+    };
+
+    ~MyFinances()
+    {
+        delete transactionManager;
+        transactionManager = NULL;
+    };
 
     void registration();
     void logIn();
+    void addNewIncome();
 };
 
 #endif

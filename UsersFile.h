@@ -8,11 +8,10 @@
 
 using namespace std;
 
-class UsersFile //:public TextFile
+class UsersFile
 {
     const string usersFileName;
     CMarkup xml;
-    //User user;
 
 public:
     UsersFile(string USERSFILENAME) : usersFileName (USERSFILENAME) {};
