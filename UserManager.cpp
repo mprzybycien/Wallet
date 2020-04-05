@@ -77,7 +77,7 @@ int UserManager::logIn()
 {
     string log = "", pass = "";
 
-    cout << endl << "Podaj login: ";
+    cout << "Podaj login: ";
     log = GeneralMethods::insertTextLine();
 
     vector <User>::iterator itr = users.begin();
@@ -117,3 +117,7 @@ bool UserManager::isUserLogedIn()
         return false;
 }
 
+int UserManager::getLogedInUserId()
+{
+    return logedInUserId;
+}

@@ -15,9 +15,9 @@ void Transaction::setDate(int newDate)
 {
         date = newDate;
 }
-void Transaction::setName(string newName)
+void Transaction::setTitle(string newTitle)
 {
-    name = newName;
+    title = newTitle;
 }
 void Transaction::setAmount(float newAmount)
 {
@@ -37,9 +37,9 @@ int Transaction::getDate()
     return date;
 }
 
-string Transaction::getName()
+string Transaction::getTitle()
 {
-    return name;
+    return title;
 }
 
 float Transaction::getAmount()

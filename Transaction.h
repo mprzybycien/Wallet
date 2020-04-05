@@ -10,20 +10,20 @@ class Transaction
     int id;
     int userId;
     int date;
-    string name;
+    string title;
     float amount;
 
 public:
     void setId(int newId);
     void setUserId(int newUserId);
     void setDate(int newDate);
-    void setName(string newName);
+    void setTitle(string newTitle);
     void setAmount(float newAmount);
 
     int getId();
     int getUserId();
     int getDate();
-    string getName();
+    string getTitle();
     float getAmount();
 };
 

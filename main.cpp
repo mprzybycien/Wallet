@@ -8,6 +8,7 @@ int main()
     MyFinances myFinances ("Users.xml");
     myFinances.registration();
     myFinances.logIn();
+    myFinances.addNewIncome();
     return 0;
 }
 

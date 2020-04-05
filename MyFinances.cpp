@@ -1,5 +1,6 @@
 #include <iostream>
 #include "MyFinances.h"
+#include "GeneralMethods.h"
 
 using namespace std;
 
@@ -13,7 +14,11 @@ void MyFinances::logIn()
     userManager.logIn();
     if (userManager.isUserLogedIn())
     {
-        new TransactionManager();
-        cout << "dobrze zalogowany" << endl;
+        new TransactionManager(userManager.getLogedInUserId());
     }
+}
+
+void MyFinances::addNewIncome()
+{
+    transactionManager -> addNewIncome();
 }

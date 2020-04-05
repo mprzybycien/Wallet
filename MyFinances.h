@@ -13,7 +13,7 @@ class MyFinances
     TransactionManager *transactionManager;
 
     public:
-    MyFinances( string usersFileName):userManager(usersFileName)
+    MyFinances(string usersFileName):userManager(usersFileName)
     {
         transactionManager = NULL;
     };
@@ -22,10 +22,11 @@ class MyFinances
     {
         delete transactionManager;
         transactionManager = NULL;
-    }
+    };
 
     void registration();
     void logIn();
+    void addNewIncome();
 };
 
 #endif

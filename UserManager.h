@@ -28,6 +28,7 @@ class UserManager
     bool isUserLogedIn();
     void registration();
     int logIn();
+    int getLogedInUserId();
 };
 
 #endif
