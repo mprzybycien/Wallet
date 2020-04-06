@@ -10,7 +10,7 @@ void TransactionManager::addNewIncome()
     cout <<"_________________________________________________________" << endl;
 
     income.setId(1); // to jest wartosc tymczasowa
-    income.setUserId(1); // tutaj jak dam stala LOGED_IN_USER_ID to program sie kompiluje natomiast w trakcie dzia³ania wywala blad
+    income.setUserId(LOGED_IN_USER_ID); // tutaj jak dam stala LOGED_IN_USER_ID to program sie kompiluje natomiast w trakcie dzia³ania wywala blad
     income.setDate(todaysOrOtherData());
     income.setAmount(enterAmount());
     income.setTitle(enterTitle());
