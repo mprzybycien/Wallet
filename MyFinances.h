@@ -27,6 +27,7 @@ class MyFinances
     void registration();
     void logIn();
     void addNewIncome();
+    void addNewExpense();
 };
 
 #endif

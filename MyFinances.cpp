@@ -14,11 +14,16 @@ void MyFinances::logIn()
     userManager.logIn();
     if (userManager.isUserLogedIn())
     {
-        new TransactionManager(userManager.getLogedInUserId());
+        transactionManager = new TransactionManager (userManager.getLogedInUserId());
     }
 }
 
 void MyFinances::addNewIncome()
 {
     transactionManager -> addNewIncome();
+}
+
+void MyFinances::addNewExpense()
+{
+    transactionManager -> addNewExpense();
 }

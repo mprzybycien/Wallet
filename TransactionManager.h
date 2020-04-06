@@ -10,6 +10,7 @@
 #include "Income.h"
 #include "GeneralMethods.h"
 #include "IncomesFile.h"
+#include "ExpensesFile.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ class TransactionManager
     const int LOGED_IN_USER_ID;
 
     IncomesFile incomesFile;
+    ExpensesFile expensesFile;
 
     vector <Income> incomes;
     vector <Expense> expenses;
@@ -41,10 +43,12 @@ class TransactionManager
 
 public:
     TransactionManager (int logedInUserId) : LOGED_IN_USER_ID(logedInUserId)
-    {};
+    {
+        incomes = incomesFile.loadLogedInUserIncomes(LOGED_IN_USER_ID);
+    };
 
     void addNewIncome();
-    void addNewExpanse();
+    void addNewExpense();
 };
 
 #endif

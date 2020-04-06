@@ -10,10 +10,10 @@ using namespace std;
 
 class IncomesFile
 {
-    //CMarkup xml;
 
 public:
     void appendIncomeToFile(Income income);
+    vector <Income> loadLogedInUserIncomes(int logedInUserId);
 };
 
 #endif

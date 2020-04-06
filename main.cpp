@@ -9,6 +9,7 @@ int main()
     //myFinances.registration();
     myFinances.logIn();
     myFinances.addNewIncome();
+    myFinances.addNewExpense();
     return 0;
 }
 

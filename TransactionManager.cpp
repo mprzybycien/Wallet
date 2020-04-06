@@ -4,13 +4,12 @@ using namespace std;
 
 void TransactionManager::addNewIncome()
 {
-    //vector <Income> incomes;
     Income income;
     cout <<">> DODAJ NOWY PRZYCHOD <<" << endl;
     cout <<"_________________________________________________________" << endl;
 
     income.setId(1); // to jest wartosc tymczasowa
-    income.setUserId(LOGED_IN_USER_ID); // tutaj jak dam stala LOGED_IN_USER_ID to program sie kompiluje natomiast w trakcie dzia³ania wywala blad
+    income.setUserId(LOGED_IN_USER_ID);
     income.setDate(todaysOrOtherData());
     income.setAmount(enterAmount());
     income.setTitle(enterTitle());
@@ -18,7 +17,7 @@ void TransactionManager::addNewIncome()
     system("cls");
     string fullDate = changeIntDateToFullDate(income.getDate());
 
-    cout << ">> PODSUMOWANIE <<" << endl;
+    cout << ">> PODSUMOWANIE - PRZYCHOD <<" << endl;
     cout << "_________________________________________________________" << endl;
     cout << "Data uznania: " << fullDate << endl;
     cout << "Kwota: " << income.getAmount() << " PLN" << endl;
@@ -29,15 +28,50 @@ void TransactionManager::addNewIncome()
 
     if (choice == 't')
     {
-        incomes.push_back(income); // program sie kompiluje natomiast wektor z przychodami musi byc zdefiniowany w tej metodzie. Jak jest zdefiniowany jako sk³¹dnik klasy to program sie kompiluje ale w trakcie pracy wywala blad
+        incomes.push_back(income);
         incomesFile.appendIncomeToFile(income);
         cout << "Poprawnie dodano nowa transakcje." << endl;
     }
     else
         cout << "Nie dodano transakcji." << endl;
-
     system("pause");
 }
+
+void TransactionManager::addNewExpense()
+{
+    Expense expense;
+    cout <<">> DODAJ NOWY WYDATEK <<" << endl;
+    cout <<"_________________________________________________________" << endl;
+
+    expense.setId(1); // to jest wartosc tymczasowa
+    expense.setUserId(LOGED_IN_USER_ID);
+    expense.setDate(todaysOrOtherData());
+    expense.setAmount(enterAmount());
+    expense.setTitle(enterTitle());
+
+    system("cls");
+    string fullDate = changeIntDateToFullDate(expense.getDate());
+
+    cout << ">> PODSUMOWANIE - WYDATEK <<" << endl;
+    cout << "_________________________________________________________" << endl;
+    cout << "Data uznania: " << fullDate << endl;
+    cout << "Kwota: " << expense.getAmount() << " PLN" << endl;
+    cout << "Tytul: " << expense.getTitle() << endl;
+    cout << "_________________________________________________________" << endl;
+    cout << "Kliknij na klawaiturze 't' aby dodac na stale transakcje lub dowolny inny klawisz aby anulowac" << endl;
+    char choice = getch();
+
+    if (choice == 't')
+    {
+        expenses.push_back(expense);
+        expensesFile.appendExpenseToFile(expense);
+        cout << "Poprawnie dodano nowa transakcje." << endl;
+    }
+    else
+        cout << "Nie dodano transakcji." << endl;
+    system("pause");
+}
+
 
 int TransactionManager::todaysOrOtherData()
 {
