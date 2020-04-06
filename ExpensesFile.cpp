@@ -20,3 +20,44 @@ void ExpensesFile::appendExpenseToFile(Expense expense)
 
     xml.Save("Expenses.xml");
 }
+
+
+vector <Expense> ExpensesFile::loadLogedInUserExpenses(int logedInUserId)
+{
+    CMarkup xml;
+    Expense expense;
+    vector <Expense> expenses;
+    bool fileExists = xml.Load("Expenses.xml");
+    if(!fileExists)
+    {
+        cout << "Plik z wydatkami jeszcze nie istnieje." << endl;;
+    }
+    xml.FindElem("Expenses");
+    xml.IntoElem();
+
+    while(xml.FindElem("Expense"))
+    {
+        xml.IntoElem();
+        xml.FindElem("userId");
+        if (atoi(xml.GetData().c_str()) == logedInUserId)
+        {
+            expense.setUserId(atoi(xml.GetData().c_str()));
+
+            xml.FindElem("id");
+            expense.setId(atoi(xml.GetData().c_str()));
+
+            xml.FindElem("date");
+            expense.setDate(atoi(xml.GetData().c_str()));
+
+            xml.FindElem("title");
+            expense.setTitle(xml.GetData());
+
+            xml.FindElem("amount");
+            expense.setAmount(atof(xml.GetData().c_str()));
+
+            expenses.push_back(expense);
+        }
+        xml.OutOfElem();
+    }
+    return expenses;
+}

@@ -8,8 +8,10 @@ int main()
     MyFinances myFinances ("Users.xml");
     //myFinances.registration();
     myFinances.logIn();
-    myFinances.addNewIncome();
-    myFinances.addNewExpense();
+    //myFinances.addNewIncome();
+    //myFinances.addNewExpense();
+    myFinances.showLogedInUserIncomes();
+    myFinances.showLogedInUserExpenses();
     return 0;
 }
 

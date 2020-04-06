@@ -12,7 +12,7 @@ void TransactionManager::addNewIncome()
     income.setUserId(LOGED_IN_USER_ID);
     income.setDate(todaysOrOtherData());
     income.setAmount(enterAmount());
-    income.setTitle(enterTitle());
+    income.setTitle(enterIncomeTitle());
 
     system("cls");
     string fullDate = changeIntDateToFullDate(income.getDate());
@@ -47,7 +47,7 @@ void TransactionManager::addNewExpense()
     expense.setUserId(LOGED_IN_USER_ID);
     expense.setDate(todaysOrOtherData());
     expense.setAmount(enterAmount());
-    expense.setTitle(enterTitle());
+    expense.setTitle(enterExpenseTitle());
 
     system("cls");
     string fullDate = changeIntDateToFullDate(expense.getDate());
@@ -266,7 +266,7 @@ float TransactionManager::replaceCommaToDotInAmount(string amount)
     return amountFloat;
 }
 
-string TransactionManager::enterTitle()
+string TransactionManager::enterIncomeTitle()
 {
     string title;
     int choice;
@@ -292,6 +292,58 @@ string TransactionManager::enterTitle()
         break;
         case 5:
             cout << "Podaj inny tytul transakcji: ";
-            return title = GeneralMethods::insertTextLine();
+
+        return title = GeneralMethods::insertTextLine();
     }
+}
+
+string TransactionManager::enterExpenseTitle()
+{
+    string title;
+    int choice;
+    cout << endl << "Wybierz tytul transakcji: " << endl;
+    cout << "1. Rata kredytu." << endl;
+    cout << "2. Czynsz." << endl;
+    cout << "3. Zakupy spozywcze." << endl;
+    cout << "4. Zakupy bez sensu." << endl;
+    cout << "5. Podaj inny tytul." << endl;
+    cout << "______________________" << endl;
+    cout << "Wybierz opcje : ";
+    cin >> choice;
+
+    switch(choice)
+    {
+        case 1: return "Rata kredytu";
+        break;
+        case 2: return "Czynsz";
+        break;
+        case 3: return "Zakupy spozywcze";
+        break;
+        case 4: return "Zakupy bez sensu";
+        break;
+        case 5:
+            cout << "Podaj inny tytul transakcji: ";
+
+        return title = GeneralMethods::insertTextLine();
+    }
+}
+
+void TransactionManager::showLogedInUserIncomes()
+{
+    Income income;
+    for (vector<Income>::iterator p = incomes.begin(); p != incomes.end(); p++)
+    {
+        cout << p -> getId() << "; " << p -> getUserId() << "; " << p -> getDate() << "; "<< p -> getTitle() << "; "<< p -> getAmount() << endl;
+    }
+    system ("pause");
+}
+
+void TransactionManager::showLogedInUserExpenses()
+{
+    Expense expense;
+    for (vector<Expense>::iterator p = expenses.begin(); p != expenses.end(); p++)
+    {
+        cout << p -> getId() << "; " << p -> getUserId() << "; " << p -> getDate() << "; "<< p -> getTitle() << "; "<< p -> getAmount() << endl;
+    }
+    system ("pause");
 }

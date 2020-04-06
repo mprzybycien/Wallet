@@ -55,9 +55,8 @@ vector <Income> IncomesFile::loadLogedInUserIncomes(int logedInUserId)
             income.setAmount(atof(xml.GetData().c_str()));
 
             incomes.push_back(income);
-
-            xml.OutOfElem();
         }
+        xml.OutOfElem();
     }
     return incomes;
 }

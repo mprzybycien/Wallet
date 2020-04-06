@@ -13,6 +13,7 @@ class ExpensesFile
 
 public:
     void appendExpenseToFile(Expense expense);
+    vector <Expense> loadLogedInUserExpenses(int logedInUserId);
 };
 
 #endif
