@@ -21,7 +21,6 @@ void ExpensesFile::appendExpenseToFile(Expense expense)
     xml.Save("Expenses.xml");
 }
 
-
 vector <Expense> ExpensesFile::loadLogedInUserExpenses(int logedInUserId)
 {
     CMarkup xml;
@@ -38,9 +37,13 @@ vector <Expense> ExpensesFile::loadLogedInUserExpenses(int logedInUserId)
     while(xml.FindElem("Expense"))
     {
         xml.IntoElem();
+        xml.FindElem("id");
+        lastExpenseId = atoi(xml.GetData().c_str());
         xml.FindElem("userId");
+        //cout << lastExpenseId <<endl;
         if (atoi(xml.GetData().c_str()) == logedInUserId)
         {
+            xml.FindElem("userId");
             expense.setUserId(atoi(xml.GetData().c_str()));
 
             xml.FindElem("id");
@@ -60,4 +63,14 @@ vector <Expense> ExpensesFile::loadLogedInUserExpenses(int logedInUserId)
         xml.OutOfElem();
     }
     return expenses;
+}
+
+int ExpensesFile::getLastExpenseId()
+{
+    return lastExpenseId;
+}
+
+void ExpensesFile::setLastExpenseId(int newLastExpenseId)
+{
+    lastExpenseId = newLastExpenseId;
 }

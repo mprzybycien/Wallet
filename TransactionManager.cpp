@@ -43,7 +43,7 @@ void TransactionManager::addNewExpense()
     cout <<">> DODAJ NOWY WYDATEK <<" << endl;
     cout <<"_________________________________________________________" << endl;
 
-    expense.setId(1); // to jest wartosc tymczasowa
+    expense.setId(expensesFile.getLastExpenseId()+1);
     expense.setUserId(LOGED_IN_USER_ID);
     expense.setDate(todaysOrOtherData());
     expense.setAmount(enterAmount());
@@ -64,6 +64,7 @@ void TransactionManager::addNewExpense()
     if (choice == 't')
     {
         expenses.push_back(expense);
+        expensesFile.setLastExpenseId(expense.getId());
         expensesFile.appendExpenseToFile(expense);
         cout << "Poprawnie dodano nowa transakcje." << endl;
     }
