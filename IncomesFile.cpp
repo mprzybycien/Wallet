@@ -33,12 +33,13 @@ vector <Income> IncomesFile::loadLogedInUserIncomes(int logedInUserId)
 
     xml.FindElem("Incomes");
     xml.IntoElem();
-    lastIncomeId = atoi(xml.GetData().c_str());
+
 
     while(xml.FindElem("Income"))
     {
         xml.IntoElem();
         xml.FindElem("id");
+        lastIncomeId = atoi(xml.GetData().c_str());
 
         xml.FindElem("userId");
         if (atoi(xml.GetData().c_str()) == logedInUserId)

@@ -80,20 +80,20 @@ int TransactionManager::todaysOrOtherData()
     int choice = 0;
     while(true)
     {
-    cout << endl << "1. Transakcja z data dzisiejsza." <<endl;
-    cout << "2. Transakcja z inna data." << endl << endl;
-    cout << "Wybierz opcje: ";
-    cin >> choice;
-    if (choice == 1)
-    {
-        return getActualDateFromSystem();
-    }
-    else if (choice  == 2)
-    {
-        return enterDate();
-    }
-    else
-        cout << "Podano niepoprawna wartoœæ";
+        cout << endl << "1. Transakcja z data dzisiejsza." <<endl;
+        cout << "2. Transakcja z inna data." << endl << endl;
+        cout << "Wybierz opcje: ";
+        cin >> choice;
+        if (choice == 1)
+        {
+            return getActualDateFromSystem();
+        }
+        else if (choice  == 2)
+        {
+            return enterDate();
+        }
+        else
+            cout << "Podano niepoprawna wartosc. Sprobuj jeszcze raz." << endl;
     }
 }
 
@@ -118,7 +118,7 @@ int TransactionManager::getActualDateFromSystem()
     else
         actualDate = actualDate + day;
 
- return atoi(actualDate.c_str());
+    return atoi(actualDate.c_str());
 }
 
 int TransactionManager::enterDate()
@@ -126,12 +126,12 @@ int TransactionManager::enterDate()
     string date;
     while(true)
     {
-    cout << endl << "Podaj date transakcji w formacie rrrr-mm-dd (na przyklad 2020-04-05): ";
-    cin >> date;
-    if (isDateInsertCorrectly(date) == true)
-        return changeFullDateToIntDate(date);
-    else
-        cout << "Wprowadzono niepoprawna date. Sprobuj ponownie." << endl;
+        cout << endl << "Podaj date transakcji w formacie rrrr-mm-dd (na przyklad 2020-04-05): ";
+        cin >> date;
+        if (isDateInsertCorrectly(date) == true)
+            return changeFullDateToIntDate(date);
+        else
+            cout << "Wprowadzono niepoprawna date. Sprobuj ponownie." << endl;
     }
 }
 
@@ -146,9 +146,9 @@ bool TransactionManager::isDateInsertCorrectly (string date)
     else if ((date[4] || date[7]) == '-')
         return false;
     else if ((isdigit(date[0])||isdigit(date[1])||
-            isdigit(date[2])||isdigit(date[3])||
-            isdigit(date[5])||isdigit(date[6])||
-            isdigit(date[8])||isdigit(date[9])) == false)
+              isdigit(date[2])||isdigit(date[3])||
+              isdigit(date[5])||isdigit(date[6])||
+              isdigit(date[8])||isdigit(date[9])) == false)
         return false;
     else if ((month < 1) || (month > 12))
         return false;
@@ -272,61 +272,81 @@ string TransactionManager::enterIncomeTitle()
 {
     string title;
     int choice;
-    cout << endl << "Wybierz tytul transakcji: " << endl;
-    cout << "1. Wyplata." << endl;
-    cout << "2. Fuszka." << endl;
-    cout << "3. Darowizna." << endl;
-    cout << "4. Zwrot." << endl;
-    cout << "5. Podaj inny tytul." << endl;
-    cout << "______________________" << endl;
-    cout << "Wybierz opcje : ";
-    cin >> choice;
-
-    switch(choice)
+    while(true)
     {
-        case 1: return "Wyplata";
-        break;
-        case 2: return "Fuszka";
-        break;
-        case 3: return "Darowizna";
-        break;
-        case 4: return "Zwrot";
-        break;
+        cout << endl << "Wybierz tytul transakcji: " << endl;
+        cout << "1. Wyplata." << endl;
+        cout << "2. Fuszka." << endl;
+        cout << "3. Darowizna." << endl;
+        cout << "4. Zwrot." << endl;
+        cout << "5. Podaj inny tytul." << endl;
+        cout << "______________________" << endl;
+        cout << "Wybierz opcje : ";
+        cin >> choice;
+
+        switch(choice)
+        {
+        case 1:
+            return "Wyplata";
+            break;
+        case 2:
+            return "Fuszka";
+            break;
+        case 3:
+            return "Darowizna";
+            break;
+        case 4:
+            return "Zwrot";
+            break;
         case 5:
             cout << "Podaj inny tytul transakcji: ";
-
-        return title = GeneralMethods::insertTextLine();
+            return title = GeneralMethods::insertTextLine();
+            break;
+        default:
+            cout << "Podano niewlasciwa wartosc. Sprobuj jeszcze raz." <<endl;
+            break;
+        }
     }
 }
 
 string TransactionManager::enterExpenseTitle()
 {
-    string title;
-    int choice;
-    cout << endl << "Wybierz tytul transakcji: " << endl;
-    cout << "1. Rata kredytu." << endl;
-    cout << "2. Czynsz." << endl;
-    cout << "3. Zakupy spozywcze." << endl;
-    cout << "4. Zakupy bez sensu." << endl;
-    cout << "5. Podaj inny tytul." << endl;
-    cout << "______________________" << endl;
-    cout << "Wybierz opcje : ";
-    cin >> choice;
-
-    switch(choice)
+    while(true)
     {
-        case 1: return "Rata kredytu";
-        break;
-        case 2: return "Czynsz";
-        break;
-        case 3: return "Zakupy spozywcze";
-        break;
-        case 4: return "Zakupy bez sensu";
-        break;
+        string title;
+        int choice;
+        cout << endl << "Wybierz tytul transakcji: " << endl;
+        cout << "1. Rata kredytu." << endl;
+        cout << "2. Czynsz." << endl;
+        cout << "3. Zakupy spozywcze." << endl;
+        cout << "4. Zakupy bez sensu." << endl;
+        cout << "5. Podaj inny tytul." << endl;
+        cout << "______________________" << endl;
+        cout << "Wybierz opcje : ";
+        cin >> choice;
+
+        switch(choice)
+        {
+        case 1:
+            return "Rata kredytu";
+            break;
+        case 2:
+            return "Czynsz";
+            break;
+        case 3:
+            return "Zakupy spozywcze";
+            break;
+        case 4:
+            return "Zakupy bez sensu";
+            break;
         case 5:
             cout << "Podaj inny tytul transakcji: ";
-
-        return title = GeneralMethods::insertTextLine();
+            return title = GeneralMethods::insertTextLine();
+            break;
+        default:
+            cout << "Podano niewlasciwa wartosc. Sprobuj jeszcze raz." <<endl;
+            break;
+        }
     }
 }
 
