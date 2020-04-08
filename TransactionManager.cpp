@@ -355,7 +355,11 @@ void TransactionManager::showLogedInUserIncomes()
     Income income;
     for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
     {
-        cout << itr -> getId() << "; " << itr -> getUserId() << "; " << itr -> getDate() << "; "<< itr -> getTitle() << "; "<< itr -> getAmount() << endl;
+        cout << itr -> getId() << "; " <<
+        itr -> getUserId() << "; " <<
+        itr -> getDate() << "; "<<
+        itr -> getTitle() << "; "<<
+        std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
     }
     system ("pause");
 }
@@ -365,7 +369,15 @@ void TransactionManager::showLogedInUserExpenses()
     Expense expense;
     for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
     {
-        cout << itr -> getId() << "; " << itr -> getUserId() << "; " << itr -> getDate() << "; "<< itr -> getTitle() << "; "<< itr -> getAmount() << endl;
+        cout << itr -> getId() << "; " <<
+        itr -> getUserId() << "; " <<
+        itr -> getDate() << "; "<<
+        itr -> getTitle() << "; "<<
+        std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
     }
     system ("pause");
 }
+/*
+  cout << fixed;
+  cout << setprecision(2) << f << '\n';
+*/

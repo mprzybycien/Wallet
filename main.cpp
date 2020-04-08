@@ -7,12 +7,12 @@ int main()
 {
     MyFinances myFinances ("Users.xml");
     //myFinances.registration();
-    myFinances.logIn();
+    myFinances.logIn();/*
     myFinances.addNewIncome();
     myFinances.addNewIncome();
     myFinances.addNewExpense();
     myFinances.addNewExpense();
-
+*/
     myFinances.showLogedInUserIncomes();
     myFinances.showLogedInUserExpenses();
     return 0;
