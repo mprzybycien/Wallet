@@ -9,6 +9,14 @@ string GeneralMethods::convertIntToString(int integer)
     return str;
 }
 
+string GeneralMethods::convertFloatToString(float float_)
+{
+    ostringstream ss;
+    ss << float_;
+    string str = ss.str();
+    return str;
+}
+
 string GeneralMethods::insertTextLine()
 {
     string ins = "";

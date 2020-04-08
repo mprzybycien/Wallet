@@ -8,7 +8,7 @@ void TransactionManager::addNewIncome()
     cout <<">> DODAJ NOWY PRZYCHOD <<" << endl;
     cout <<"_________________________________________________________" << endl;
 
-    income.setId(1); // to jest wartosc tymczasowa
+    income.setId(incomesFile.getLastIncomeId()+1);
     income.setUserId(LOGED_IN_USER_ID);
     income.setDate(todaysOrOtherData());
     income.setAmount(enterAmount());
@@ -19,7 +19,7 @@ void TransactionManager::addNewIncome()
 
     cout << ">> PODSUMOWANIE - PRZYCHOD <<" << endl;
     cout << "_________________________________________________________" << endl;
-    cout << "Data uznania: " << fullDate << endl;
+    cout << "Data: " << fullDate << endl;
     cout << "Kwota: " << income.getAmount() << " PLN" << endl;
     cout << "Tytul: " << income.getTitle() << endl;
     cout << "_________________________________________________________" << endl;
@@ -29,6 +29,7 @@ void TransactionManager::addNewIncome()
     if (choice == 't')
     {
         incomes.push_back(income);
+        incomesFile.setLastIncomeId(income.getId());
         incomesFile.appendIncomeToFile(income);
         cout << "Poprawnie dodano nowa transakcje." << endl;
     }
@@ -54,7 +55,7 @@ void TransactionManager::addNewExpense()
 
     cout << ">> PODSUMOWANIE - WYDATEK <<" << endl;
     cout << "_________________________________________________________" << endl;
-    cout << "Data uznania: " << fullDate << endl;
+    cout << "Data: " << fullDate << endl;
     cout << "Kwota: " << expense.getAmount() << " PLN" << endl;
     cout << "Tytul: " << expense.getTitle() << endl;
     cout << "_________________________________________________________" << endl;
@@ -332,9 +333,9 @@ string TransactionManager::enterExpenseTitle()
 void TransactionManager::showLogedInUserIncomes()
 {
     Income income;
-    for (vector<Income>::iterator p = incomes.begin(); p != incomes.end(); p++)
+    for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
     {
-        cout << p -> getId() << "; " << p -> getUserId() << "; " << p -> getDate() << "; "<< p -> getTitle() << "; "<< p -> getAmount() << endl;
+        cout << itr -> getId() << "; " << itr -> getUserId() << "; " << itr -> getDate() << "; "<< itr -> getTitle() << "; "<< itr -> getAmount() << endl;
     }
     system ("pause");
 }
@@ -342,9 +343,9 @@ void TransactionManager::showLogedInUserIncomes()
 void TransactionManager::showLogedInUserExpenses()
 {
     Expense expense;
-    for (vector<Expense>::iterator p = expenses.begin(); p != expenses.end(); p++)
+    for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
     {
-        cout << p -> getId() << "; " << p -> getUserId() << "; " << p -> getDate() << "; "<< p -> getTitle() << "; "<< p -> getAmount() << endl;
+        cout << itr -> getId() << "; " << itr -> getUserId() << "; " << itr -> getDate() << "; "<< itr -> getTitle() << "; "<< itr -> getAmount() << endl;
     }
     system ("pause");
 }

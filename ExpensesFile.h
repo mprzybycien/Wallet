@@ -5,12 +5,14 @@
 #include "expense.h"
 #include "Markup.h"
 #include "vector"
+#include "GeneralMethods.h"
 
 using namespace std;
 
 class ExpensesFile
 {
     int lastExpenseId;
+    CMarkup xml;
 
 public:
     void appendExpenseToFile(Expense expense);
@@ -18,7 +20,7 @@ public:
 
     ExpensesFile()
     {
-        lastExpenseId = 1;
+        lastExpenseId = 0;
     };
     int getLastExpenseId();
     void setLastExpenseId(int newLastExpenseId);
