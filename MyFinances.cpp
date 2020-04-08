@@ -27,3 +27,13 @@ void MyFinances::addNewExpense()
 {
     transactionManager -> addNewExpense();
 }
+
+void MyFinances::showLogedInUserIncomes()
+{
+    transactionManager -> showLogedInUserIncomes();
+}
+
+void MyFinances::showLogedInUserExpenses()
+{
+    transactionManager -> showLogedInUserExpenses();
+}

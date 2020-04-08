@@ -38,17 +38,21 @@ class TransactionManager
     bool isAmountInsertCorrectly (string date);
     float roundAmount (float amount);
     float replaceCommaToDotInAmount(string amount);
-    string enterTitle();
+    string enterIncomeTitle();
+    string enterExpenseTitle();
 
 
 public:
     TransactionManager (int logedInUserId) : LOGED_IN_USER_ID(logedInUserId)
     {
         incomes = incomesFile.loadLogedInUserIncomes(LOGED_IN_USER_ID);
+        expenses = expensesFile.loadLogedInUserExpenses(LOGED_IN_USER_ID);
     };
 
     void addNewIncome();
+    void showLogedInUserIncomes();
     void addNewExpense();
+    void showLogedInUserExpenses();
 };
 
 #endif
