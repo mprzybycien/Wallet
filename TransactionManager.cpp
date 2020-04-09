@@ -350,10 +350,19 @@ string TransactionManager::enterExpenseTitle()
     }
 }
 
-void TransactionManager::showLogedInUserIncomes()
+void TransactionManager::showIncomesDetailsOfLogInUserSortedByDate()
 {
-    Income income;
-    for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+    Transaction transaction;
+    vector <Transaction> tempIncomes;
+
+    for (int i=0; i <incomes.size(); i++)
+    {
+        tempIncomes.push_back(incomes[i]);
+    }
+
+    tempIncomes = transaction.sortLogedInUserTransactions(tempIncomes);
+
+    for (vector<Transaction>::iterator itr = tempIncomes.begin(); itr != tempIncomes.end(); itr++)
     {
         cout << itr -> getId() << "; " <<
         itr -> getUserId() << "; " <<
@@ -364,11 +373,19 @@ void TransactionManager::showLogedInUserIncomes()
     system ("pause");
 }
 
-void TransactionManager::showLogedInUserExpenses()
+void TransactionManager::showExpensesDetailsOfLogInUserSortedByDate()
 {
-    Expense expense;
+    Transaction transaction;
+    vector <Transaction> tempExpenses;
 
-    for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+    for (int i=0; i <expenses.size(); i++)
+    {
+        tempExpenses.push_back(expenses[i]);
+    }
+
+    tempExpenses = transaction.sortLogedInUserTransactions(tempExpenses);
+
+    for (vector<Transaction>::iterator itr = tempExpenses.begin(); itr != tempExpenses.end(); itr++)
     {
         cout << itr -> getId() << "; " <<
         itr -> getUserId() << "; " <<
@@ -376,11 +393,5 @@ void TransactionManager::showLogedInUserExpenses()
         itr -> getTitle() << "; "<<
         std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
     }
-
     system ("pause");
-
 }
-/*
-  cout << fixed;
-  cout << setprecision(2) << f << '\n';
-*/

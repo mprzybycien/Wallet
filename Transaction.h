@@ -2,6 +2,8 @@
 #define TRANSACTION_H
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -25,6 +27,10 @@ public:
     int getDate();
     string getTitle();
     float getAmount();
+
+    struct lessThanKey;
+    vector <Transaction> sortLogedInUserTransactions(vector <Transaction> transactions);
+
 };
 
 #endif
