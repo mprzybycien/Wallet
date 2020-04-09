@@ -29,7 +29,7 @@ class MyFinances
     void addNewIncome();
     void addNewExpense();
     void showIncomesDetailsOfLogInUserSortedByDate();
-    void showLogedInUserExpenses();
+    void showExpensesDetailsOfLogInUserSortedByDate();
 };
 
 #endif

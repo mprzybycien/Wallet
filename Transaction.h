@@ -11,7 +11,7 @@ class Transaction
 {
     int id;
     int userId;
-
+    int date;
     string title;
     float amount;
 
@@ -28,8 +28,8 @@ public:
     string getTitle();
     float getAmount();
 
-    int date;
-
+    struct lessThanKey;
+    vector <Transaction> sortLogedInUserTransactions(vector <Transaction> transactions);
 
 };
 

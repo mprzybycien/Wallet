@@ -47,3 +47,18 @@ float Transaction::getAmount()
     return amount;
 }
 
+
+struct Transaction::lessThanKey
+{
+    inline bool operator() (const Transaction& struct1, const Transaction& struct2)
+    {
+        return (struct1.date < struct2.date);
+    }
+};
+
+vector <Transaction> Transaction::sortLogedInUserTransactions (vector <Transaction> transactions)
+{
+    sort(transactions.begin(), transactions.end(), lessThanKey());
+    return transactions;
+}
+

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
-#include <algorithm>
+//#include <algorithm>
 #include <iomanip>
 #include <vector>
 #include <windows.h>
@@ -54,11 +54,12 @@ public:
     void addNewIncome();
     void showIncomesDetailsOfLogInUserSortedByDate();
     void addNewExpense();
-    void showLogedInUserExpenses();
-
+    void showExpensesDetailsOfLogInUserSortedByDate();
+/*
     struct lessThanKey;
     vector <Income> sortLogedInUserIncomes(vector <Income> incomes);
     vector <Expense> sortLogedInUserExpenses(vector <Expense> expenses);
+    */
 };
 
 #endif

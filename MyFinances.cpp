@@ -33,7 +33,7 @@ void MyFinances::showIncomesDetailsOfLogInUserSortedByDate()
     transactionManager -> showIncomesDetailsOfLogInUserSortedByDate();
 }
 
-void MyFinances::showLogedInUserExpenses()
+void MyFinances::showExpensesDetailsOfLogInUserSortedByDate()
 {
-    transactionManager -> showLogedInUserExpenses();
+    transactionManager -> showExpensesDetailsOfLogInUserSortedByDate();
 }

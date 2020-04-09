@@ -352,9 +352,17 @@ string TransactionManager::enterExpenseTitle()
 
 void TransactionManager::showIncomesDetailsOfLogInUserSortedByDate()
 {
-    vector <Income> tempIncomes = sortLogedInUserIncomes(incomes);
+    Transaction transaction;
+    vector <Transaction> tempIncomes;
 
-    for (vector<Income>::iterator itr = tempIncomes.begin(); itr != tempIncomes.end(); itr++)
+    for (int i=0; i <incomes.size(); i++)
+    {
+        tempIncomes.push_back(incomes[i]);
+    }
+
+    tempIncomes = transaction.sortLogedInUserTransactions(tempIncomes);
+
+    for (vector<Transaction>::iterator itr = tempIncomes.begin(); itr != tempIncomes.end(); itr++)
     {
         cout << itr -> getId() << "; " <<
         itr -> getUserId() << "; " <<
@@ -365,11 +373,19 @@ void TransactionManager::showIncomesDetailsOfLogInUserSortedByDate()
     system ("pause");
 }
 
-void TransactionManager::showLogedInUserExpenses()
+void TransactionManager::showExpensesDetailsOfLogInUserSortedByDate()
 {
-    vector <Expense> tempExpenses = sortLogedInUserExpenses(expenses);
+    Transaction transaction;
+    vector <Transaction> tempExpenses;
 
-    for (vector<Expense>::iterator itr = tempExpenses.begin(); itr != tempExpenses.end(); itr++)
+    for (int i=0; i <expenses.size(); i++)
+    {
+        tempExpenses.push_back(expenses[i]);
+    }
+
+    tempExpenses = transaction.sortLogedInUserTransactions(tempExpenses);
+
+    for (vector<Transaction>::iterator itr = tempExpenses.begin(); itr != tempExpenses.end(); itr++)
     {
         cout << itr -> getId() << "; " <<
         itr -> getUserId() << "; " <<
@@ -379,27 +395,3 @@ void TransactionManager::showLogedInUserExpenses()
     }
     system ("pause");
 }
-
-struct TransactionManager::lessThanKey
-{
-    inline bool operator() (const Transaction& struct1, const Transaction& struct2)
-    {
-        return (struct1.date < struct2.date);
-    }
-};
-
-vector <Income> TransactionManager::sortLogedInUserIncomes (vector <Income> incomes)
-{
-    sort(incomes.begin(), incomes.end(), lessThanKey());
-    return incomes;
-}
-
-vector <Expense> TransactionManager::sortLogedInUserExpenses (vector <Expense> expenses)
-{
-    sort(expenses.begin(), expenses.end(), lessThanKey());
-    return expenses;
-}
-
-
-
-
