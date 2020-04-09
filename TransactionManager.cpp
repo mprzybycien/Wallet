@@ -350,10 +350,11 @@ string TransactionManager::enterExpenseTitle()
     }
 }
 
-void TransactionManager::showLogedInUserIncomes()
+void TransactionManager::showIncomesDetailsOfLogInUserSortedByDate()
 {
-    Income income;
-    for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+    vector <Income> tempIncomes = sortLogedInUserIncomes(incomes);
+
+    for (vector<Income>::iterator itr = tempIncomes.begin(); itr != tempIncomes.end(); itr++)
     {
         cout << itr -> getId() << "; " <<
         itr -> getUserId() << "; " <<
@@ -366,9 +367,9 @@ void TransactionManager::showLogedInUserIncomes()
 
 void TransactionManager::showLogedInUserExpenses()
 {
-    Expense expense;
+    vector <Expense> tempExpenses = sortLogedInUserExpenses(expenses);
 
-    for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+    for (vector<Expense>::iterator itr = tempExpenses.begin(); itr != tempExpenses.end(); itr++)
     {
         cout << itr -> getId() << "; " <<
         itr -> getUserId() << "; " <<
@@ -376,11 +377,29 @@ void TransactionManager::showLogedInUserExpenses()
         itr -> getTitle() << "; "<<
         std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
     }
-
     system ("pause");
-
 }
-/*
-  cout << fixed;
-  cout << setprecision(2) << f << '\n';
-*/
+
+struct TransactionManager::lessThanKey
+{
+    inline bool operator() (const Transaction& struct1, const Transaction& struct2)
+    {
+        return (struct1.date < struct2.date);
+    }
+};
+
+vector <Income> TransactionManager::sortLogedInUserIncomes (vector <Income> incomes)
+{
+    sort(incomes.begin(), incomes.end(), lessThanKey());
+    return incomes;
+}
+
+vector <Expense> TransactionManager::sortLogedInUserExpenses (vector <Expense> expenses)
+{
+    sort(expenses.begin(), expenses.end(), lessThanKey());
+    return expenses;
+}
+
+
+
+

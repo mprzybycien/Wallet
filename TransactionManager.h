@@ -4,11 +4,13 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+#include <algorithm>
 #include <iomanip>
 #include <vector>
 #include <windows.h>
 #include "Expense.h"
 #include "Income.h"
+#include "Transaction.h"
 #include "GeneralMethods.h"
 #include "IncomesFile.h"
 #include "ExpensesFile.h"
@@ -42,7 +44,6 @@ class TransactionManager
     string enterIncomeTitle();
     string enterExpenseTitle();
 
-
 public:
     TransactionManager (int logedInUserId) : LOGED_IN_USER_ID(logedInUserId)
     {
@@ -51,9 +52,13 @@ public:
     };
 
     void addNewIncome();
-    void showLogedInUserIncomes();
+    void showIncomesDetailsOfLogInUserSortedByDate();
     void addNewExpense();
     void showLogedInUserExpenses();
+
+    struct lessThanKey;
+    vector <Income> sortLogedInUserIncomes(vector <Income> incomes);
+    vector <Expense> sortLogedInUserExpenses(vector <Expense> expenses);
 };
 
 #endif

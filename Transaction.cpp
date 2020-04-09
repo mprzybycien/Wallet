@@ -13,7 +13,7 @@ void Transaction::setUserId(int newUserId)
 }
 void Transaction::setDate(int newDate)
 {
-        date = newDate;
+    date = newDate;
 }
 void Transaction::setTitle(string newTitle)
 {
@@ -46,3 +46,4 @@ float Transaction::getAmount()
 {
     return amount;
 }
+

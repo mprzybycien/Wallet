@@ -28,9 +28,9 @@ void MyFinances::addNewExpense()
     transactionManager -> addNewExpense();
 }
 
-void MyFinances::showLogedInUserIncomes()
+void MyFinances::showIncomesDetailsOfLogInUserSortedByDate()
 {
-    transactionManager -> showLogedInUserIncomes();
+    transactionManager -> showIncomesDetailsOfLogInUserSortedByDate();
 }
 
 void MyFinances::showLogedInUserExpenses()

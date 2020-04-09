@@ -2,6 +2,8 @@
 #define TRANSACTION_H
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -9,7 +11,7 @@ class Transaction
 {
     int id;
     int userId;
-    int date;
+
     string title;
     float amount;
 
@@ -25,6 +27,10 @@ public:
     int getDate();
     string getTitle();
     float getAmount();
+
+    int date;
+
+
 };
 
 #endif
