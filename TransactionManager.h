@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
-//#include <algorithm>
 #include <iomanip>
 #include <vector>
 #include <windows.h>
@@ -43,6 +42,10 @@ class TransactionManager
     float replaceCommaToDotInAmount(string amount);
     string enterIncomeTitle();
     string enterExpenseTitle();
+    void showIncomesDetailsOfLogInUserSortedByDate(vector <Transaction> &tempIncomes);
+    void showExpensesDetailsOfLogInUserSortedByDate(vector <Transaction> &tempExpenses);
+    vector <Transaction> writeIncomesFromSpecifiedPeriodToTempVector(int earlyDate, int lateDate);
+    vector <Transaction> writeExpensesFromSpecifiedPeriodToTempVector(int earlyDate, int lateDate);
 
 public:
     TransactionManager (int logedInUserId) : LOGED_IN_USER_ID(logedInUserId)
@@ -52,14 +55,10 @@ public:
     };
 
     void addNewIncome();
-    void showIncomesDetailsOfLogInUserSortedByDate();
     void addNewExpense();
-    void showExpensesDetailsOfLogInUserSortedByDate();
-/*
-    struct lessThanKey;
-    vector <Income> sortLogedInUserIncomes(vector <Income> incomes);
-    vector <Expense> sortLogedInUserExpenses(vector <Expense> expenses);
-    */
+    void showCurrentMonthBalance();
+    void showPreviousMonthBalance();
+    void showSelectedPeroidBalance();
 };
 
 #endif

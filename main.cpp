@@ -12,9 +12,10 @@ int main()
     //myFinances.addNewIncome();
     //myFinances.addNewExpense();
     //myFinances.addNewExpense();
+    //myFinances.showCurrentMonthBalance();
+    //myFinances.showPreviousMonthBalance();
+    myFinances.showSelectedPeroidBalance();
 
-    myFinances.showIncomesDetailsOfLogInUserSortedByDate();
-    myFinances.showExpensesDetailsOfLogInUserSortedByDate();
     return 0;
 }
 

@@ -28,12 +28,17 @@ void MyFinances::addNewExpense()
     transactionManager -> addNewExpense();
 }
 
-void MyFinances::showIncomesDetailsOfLogInUserSortedByDate()
+void MyFinances::showCurrentMonthBalance()
 {
-    transactionManager -> showIncomesDetailsOfLogInUserSortedByDate();
+    transactionManager -> showCurrentMonthBalance();
 }
 
-void MyFinances::showExpensesDetailsOfLogInUserSortedByDate()
+void MyFinances::showPreviousMonthBalance()
 {
-    transactionManager -> showExpensesDetailsOfLogInUserSortedByDate();
+    transactionManager -> showPreviousMonthBalance();
+}
+
+void MyFinances::showSelectedPeroidBalance()
+{
+    transactionManager -> showSelectedPeroidBalance();
 }
