@@ -350,16 +350,9 @@ string TransactionManager::enterExpenseTitle()
     }
 }
 
-void TransactionManager::showIncomesDetailsOfLogInUserSortedByDate()
+void TransactionManager::showIncomesDetailsOfLogInUserSortedByDate(vector <Transaction> &tempIncomes )
 {
     Transaction transaction;
-    vector <Transaction> tempIncomes;
-
-    for (int i=0; i <incomes.size(); i++)
-    {
-        tempIncomes.push_back(incomes[i]);
-    }
-
     tempIncomes = transaction.sortLogedInUserTransactions(tempIncomes);
 
     for (vector<Transaction>::iterator itr = tempIncomes.begin(); itr != tempIncomes.end(); itr++)
@@ -373,16 +366,9 @@ void TransactionManager::showIncomesDetailsOfLogInUserSortedByDate()
     system ("pause");
 }
 
-void TransactionManager::showExpensesDetailsOfLogInUserSortedByDate()
+void TransactionManager::showExpensesDetailsOfLogInUserSortedByDate(vector <Transaction> &tempExpenses)
 {
     Transaction transaction;
-    vector <Transaction> tempExpenses;
-
-    for (int i=0; i <expenses.size(); i++)
-    {
-        tempExpenses.push_back(expenses[i]);
-    }
-
     tempExpenses = transaction.sortLogedInUserTransactions(tempExpenses);
 
     for (vector<Transaction>::iterator itr = tempExpenses.begin(); itr != tempExpenses.end(); itr++)
@@ -394,4 +380,40 @@ void TransactionManager::showExpensesDetailsOfLogInUserSortedByDate()
         std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
     }
     system ("pause");
+}
+
+void TransactionManager::showCurrentMonthBalance()
+{
+    string date = changeIntDateToFullDate(getActualDateFromSystem());
+    date.replace(8,2,"01");
+    vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(changeFullDateToIntDate(date), getActualDateFromSystem());
+    vector <Transaction> tempExpenses = writeExpensesFromSpecifiedPeriodToTempVector(changeFullDateToIntDate(date), getActualDateFromSystem());
+    showIncomesDetailsOfLogInUserSortedByDate(tempIncomes);
+    showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
+}
+
+vector <Transaction> TransactionManager::writeIncomesFromSpecifiedPeriodToTempVector(int earlyDate, int lateDate)
+{
+    vector <Transaction> tempIncomes;
+    Income income;
+
+    for (int i=0; i <incomes.size(); i++)
+    {
+        if ((incomes[i].getDate() >= earlyDate) && (incomes[i].getDate() <= lateDate))
+        tempIncomes.push_back(incomes[i]);
+    }
+    return tempIncomes;
+}
+
+vector <Transaction> TransactionManager::writeExpensesFromSpecifiedPeriodToTempVector(int earlyDate, int lateDate)
+{
+    vector <Transaction> tempExpenses;
+    Expense expense;
+
+    for (int i=0; i <expenses.size(); i++)
+    {
+        if ((expenses[i].getDate() >= earlyDate) && (expenses[i].getDate() <= lateDate))
+        tempExpenses.push_back(expenses[i]);
+    }
+    return tempExpenses;
 }

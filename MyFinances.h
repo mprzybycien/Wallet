@@ -28,8 +28,8 @@ class MyFinances
     void logIn();
     void addNewIncome();
     void addNewExpense();
-    void showIncomesDetailsOfLogInUserSortedByDate();
-    void showExpensesDetailsOfLogInUserSortedByDate();
+    void showCurrentMonthBalance();
+
 };
 
 #endif

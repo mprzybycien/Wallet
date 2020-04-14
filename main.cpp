@@ -10,11 +10,10 @@ int main()
     myFinances.logIn();
     //myFinances.addNewIncome();
     //myFinances.addNewIncome();
-    //myFinances.addNewExpense();
-    //myFinances.addNewExpense();
+    myFinances.addNewExpense();
+    myFinances.addNewExpense();
+    myFinances.showCurrentMonthBalance();
 
-    myFinances.showIncomesDetailsOfLogInUserSortedByDate();
-    myFinances.showExpensesDetailsOfLogInUserSortedByDate();
     return 0;
 }
 
