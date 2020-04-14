@@ -157,13 +157,13 @@ bool TransactionManager::isDateInsertCorrectly (string date)
 
     else if (day < 1)
         return false;
-    else if ((day > 31) && ((month = 1) || (month = 3) || (month = 5) || (month = 7) || (month = 8) || (month = 10) || (month = 12)))
+    else if ((day > 31) && ((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12)))
         return false;
-    else if ((day > 30) && ((month = 4) || (month = 6) || (month = 9) || (month = 11)))
+    else if ((day > 30) && ((month == 4) || (month == 6) || (month == 9) || (month == 11)))
         return false;
-    else if ((day > 29) && (isThisYearLeap(year) == true) && (month = 2))
+    else if ((day > 29) && (isThisYearLeap(year) == true) && (month == 2))
         return false;
-    else if ((day > 28) && (isThisYearLeap(year) == false) && (month = 2))
+    else if ((day > 28) && (isThisYearLeap(year) == false) && (month == 2))
         return false;
     return true;
 }
@@ -382,16 +382,6 @@ void TransactionManager::showExpensesDetailsOfLogInUserSortedByDate(vector <Tran
     system ("pause");
 }
 
-void TransactionManager::showCurrentMonthBalance()
-{
-    string date = changeIntDateToFullDate(getActualDateFromSystem());
-    date.replace(8,2,"01");
-    vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(changeFullDateToIntDate(date), getActualDateFromSystem());
-    vector <Transaction> tempExpenses = writeExpensesFromSpecifiedPeriodToTempVector(changeFullDateToIntDate(date), getActualDateFromSystem());
-    showIncomesDetailsOfLogInUserSortedByDate(tempIncomes);
-    showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
-}
-
 vector <Transaction> TransactionManager::writeIncomesFromSpecifiedPeriodToTempVector(int earlyDate, int lateDate)
 {
     vector <Transaction> tempIncomes;
@@ -417,3 +407,65 @@ vector <Transaction> TransactionManager::writeExpensesFromSpecifiedPeriodToTempV
     }
     return tempExpenses;
 }
+
+void TransactionManager::showCurrentMonthBalance()
+{
+    string date = changeIntDateToFullDate(getActualDateFromSystem());
+    date.replace(8,2,"01");
+
+    int earlyDate = changeFullDateToIntDate(date);
+    int lateDate = getActualDateFromSystem();
+
+    vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
+    vector <Transaction> tempExpenses = writeExpensesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
+
+    showIncomesDetailsOfLogInUserSortedByDate(tempIncomes);
+    showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
+}
+
+void TransactionManager::showPreviousMonthBalance()
+{
+    string date;
+
+    int month = getMonthFromFullDate(changeIntDateToFullDate(getActualDateFromSystem()));
+    int earlyDate, lateDate;
+
+    if (month == 1)
+        date = changeIntDateToFullDate(getActualDateFromSystem() - 8900);
+    else
+        date = changeIntDateToFullDate(getActualDateFromSystem() - 100); // Magiczne liczby 8900 oraz 100 :D
+
+    date.replace(8,2,"01");
+
+    earlyDate = changeFullDateToIntDate(date);
+    month = getMonthFromFullDate(date);
+    int year = getYearFromFullDate(date);
+
+    if ((month == 1) ||
+       (month == 3) ||
+       (month == 5) ||
+       (month == 7) ||
+       (month == 8) ||
+       (month == 10) ||
+       (month == 12))
+       date.replace(8,2,"31");
+
+    else if ((month == 4) ||
+             (month == 6) ||
+             (month == 9) ||
+             (month == 11))
+        date.replace(8,2,"30");
+    else if ((month == 2) && (isThisYearLeap(year) == true))
+        date.replace(8,2,"29");
+    else if ((month == 2) && (isThisYearLeap(year) == false))
+        date.replace(8,2,"28");
+
+    lateDate = changeFullDateToIntDate(date);
+
+    vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
+    vector <Transaction> tempExpenses = writeExpensesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
+
+    showIncomesDetailsOfLogInUserSortedByDate(tempIncomes);
+    showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
+}
+

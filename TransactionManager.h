@@ -57,8 +57,7 @@ public:
     void addNewIncome();
     void addNewExpense();
     void showCurrentMonthBalance();
-
-
+    void showPreviousMonthBalance();
 };
 
 #endif

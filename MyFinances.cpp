@@ -32,3 +32,8 @@ void MyFinances::showCurrentMonthBalance()
 {
     transactionManager -> showCurrentMonthBalance();
 }
+
+void MyFinances::showPreviousMonthBalance()
+{
+    transactionManager -> showPreviousMonthBalance();
+}
