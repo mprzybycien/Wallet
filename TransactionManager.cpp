@@ -126,7 +126,7 @@ int TransactionManager::enterDate()
     string date;
     while(true)
     {
-        cout << endl << "Podaj date transakcji w formacie rrrr-mm-dd (na przyklad 2020-04-05): ";
+        cout << endl << "Podaj date w formacie rrrr-mm-dd (na przyklad 2020-04-05): ";
         cin >> date;
         if (isDateInsertCorrectly(date) == true)
             return changeFullDateToIntDate(date);
@@ -438,6 +438,7 @@ void TransactionManager::showPreviousMonthBalance()
     date.replace(8,2,"01");
 
     earlyDate = changeFullDateToIntDate(date);
+
     month = getMonthFromFullDate(date);
     int year = getYearFromFullDate(date);
 
@@ -449,7 +450,6 @@ void TransactionManager::showPreviousMonthBalance()
        (month == 10) ||
        (month == 12))
        date.replace(8,2,"31");
-
     else if ((month == 4) ||
              (month == 6) ||
              (month == 9) ||
@@ -469,3 +469,19 @@ void TransactionManager::showPreviousMonthBalance()
     showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
 }
 
+void TransactionManager::showSelectedPeroidBalance()
+{
+    int earlyDate, lateDate;
+
+    cout << ">> DATA POCZATKOWA <<" << endl;
+    earlyDate = enterDate();
+
+    cout << ">> DATA KONCOWA <<" << endl;
+    lateDate = enterDate();
+
+    vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
+    vector <Transaction> tempExpenses = writeExpensesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
+
+    showIncomesDetailsOfLogInUserSortedByDate(tempIncomes);
+    showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
+}

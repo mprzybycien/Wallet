@@ -58,6 +58,7 @@ public:
     void addNewExpense();
     void showCurrentMonthBalance();
     void showPreviousMonthBalance();
+    void showSelectedPeroidBalance();
 };
 
 #endif

@@ -37,3 +37,8 @@ void MyFinances::showPreviousMonthBalance()
 {
     transactionManager -> showPreviousMonthBalance();
 }
+
+void MyFinances::showSelectedPeroidBalance()
+{
+    transactionManager -> showSelectedPeroidBalance();
+}
