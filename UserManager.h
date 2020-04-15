@@ -5,7 +5,7 @@
 #include <vector>
 #include "User.h"
 #include "UsersFile.h"
-#include <string>
+#include "GeneralMethods.h"
 
 using namespace std;
 

@@ -2,7 +2,6 @@
 #define INCOMESFILE_H
 #include <iostream>
 #include "income.h"
-#include "expense.h"
 #include "Markup.h"
 #include "vector"
 #include "GeneralMethods.h"
@@ -22,7 +21,6 @@ public:
     {
         lastIncomeId = 0;
     };
-
     int getLastIncomeId();
     void setLastIncomeId(int newLastIncomeId);
 };

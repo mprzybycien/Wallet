@@ -20,7 +20,6 @@ public:
     vector <User> loadUsersFromFile();
     void removeFile(string usersFileName);
     void saveUsersVectorToFile (vector <User> &users);
-
 };
 
 #endif

@@ -1,6 +1,4 @@
-#include <iostream>
 #include "MyFinances.h"
-#include "GeneralMethods.h"
 
 using namespace std;
 

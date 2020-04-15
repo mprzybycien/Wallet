@@ -69,8 +69,7 @@ vector <User> UsersFile::loadUsersFromFile()
 
 void UsersFile::saveUsersVectorToFile (vector <User> &users)
 {
-    User user;
-    removeFile(usersFileName);
+    removeFile(usersFileName.c_str());
 
     system("pause");
     CMarkup *tempXml;
@@ -100,6 +99,6 @@ void UsersFile::removeFile(string usersFileName)
 {
     if (remove(usersFileName.c_str()) == 0) {}
     else
-        cout << "Nie udalo sie usunac pliku " << usersFileName << endl;
+        cout << "Nie udalo sie usunac pliku " << usersFileName.c_str() << endl;
 }
 

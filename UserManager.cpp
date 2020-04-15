@@ -1,12 +1,4 @@
-#include <iostream>
-#include <windows.h>
-#include <conio.h>
 #include "UserManager.h"
-#include "GeneralMethods.h"
-#include <stdexcept>
-#include <string>
-#include "UserManager.h"
-#include "GeneralMethods.h"
 
 using namespace std;
 
