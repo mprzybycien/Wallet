@@ -41,6 +41,7 @@ class MyFinances
 
     bool isUserLogedIn();
     void logOut();
+    string showDataOfLogInUser();
 
 };
 

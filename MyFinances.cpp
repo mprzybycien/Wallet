@@ -21,6 +21,11 @@ bool MyFinances::isUserLogedIn()
     userManager.isUserLogedIn();
 }
 
+string MyFinances::showDataOfLogInUser()
+{
+    return userManager.showDataOfLogInUser();
+}
+
 void MyFinances::addNewIncome()
 {
     transactionManager -> addNewIncome();

@@ -133,6 +133,20 @@ void UserManager::changePassword()
         if (itr -> getId() == logedInUserId)
             itr -> setPassword(newPass);
     }
+    system("cls");
     usersFile.saveUsersVectorToFile(users);
+    cout << "Nadano nowe haslo." << endl;
+    system("pause");
+}
 
+string UserManager::showDataOfLogInUser()
+{
+    User user;
+    string name = "";
+    for (vector<User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if(itr -> getId() == logedInUserId)
+        name = itr -> getName() + " " + itr -> getSurname();
+    }
+    return name;
 }

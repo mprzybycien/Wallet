@@ -27,8 +27,9 @@ int main()
             myFinances.logIn();
             while (myFinances.isUserLogedIn() == true)
             {
+                string dataOfLogInUser = myFinances.showDataOfLogInUser();
                 system("cls");
-                cout << "Menu glowne" << endl;
+                cout << "PULPIT UZYTKOWNIKA: " << dataOfLogInUser << endl;
                 cout << "_______________________" << endl;
                 cout << "1. Dodaj przychod." << endl;
                 cout << "2. Dodaj wydatek" << endl;

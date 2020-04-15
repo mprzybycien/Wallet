@@ -75,7 +75,6 @@ void TransactionManager::addNewExpense()
     system("pause");
 }
 
-
 int TransactionManager::todaysOrOtherData()
 {
     int choice = 0;
@@ -514,3 +513,5 @@ void TransactionManager::showSelectedPeroidBalance()
     showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
     system ("pause");
 }
+
+

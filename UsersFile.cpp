@@ -70,8 +70,6 @@ vector <User> UsersFile::loadUsersFromFile()
 void UsersFile::saveUsersVectorToFile (vector <User> &users)
 {
     removeFile(usersFileName.c_str());
-
-    system("pause");
     CMarkup *tempXml;
 
     tempXml = new CMarkup;

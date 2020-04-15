@@ -31,6 +31,7 @@ class UserManager
     int getLogedInUserId();
     void setZeroAsLogedInUserId();
     void changePassword();
+    string showDataOfLogInUser();
 };
 
 #endif
