@@ -26,6 +26,8 @@ class MyFinances
 
     void registration();
     void logIn();
+    void changePassword();
+
     void addNewIncome();
     void addNewExpense();
     void showCurrentMonthBalance();
@@ -34,6 +36,7 @@ class MyFinances
 
     bool isUserLogedIn();
     void logOut();
+
 };
 
 #endif

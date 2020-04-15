@@ -13,10 +13,13 @@ class UsersFile
     const string usersFileName;
     CMarkup xml;
 
+
 public:
     UsersFile(string USERSFILENAME) : usersFileName (USERSFILENAME) {};
     void appendUserToFile(User user);
     vector <User> loadUsersFromFile();
+    void removeFile(string usersFileName);
+    void saveUsersVectorToFile (vector <User> &users);
 
 };
 

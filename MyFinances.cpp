@@ -54,3 +54,9 @@ void MyFinances::logOut()
     delete transactionManager;
     transactionManager = NULL;
 }
+
+void MyFinances::changePassword()
+{
+    userManager.changePassword();
+}
+

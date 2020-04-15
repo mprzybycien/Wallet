@@ -30,6 +30,7 @@ class UserManager
     int logIn();
     int getLogedInUserId();
     void setZeroAsLogedInUserId();
+    void changePassword();
 };
 
 #endif

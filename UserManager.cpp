@@ -129,3 +129,18 @@ void UserManager::setZeroAsLogedInUserId()
     cout << "Poprawnie wylogowano." << endl;
     system("pause");
 }
+
+void UserManager::changePassword()
+{
+    string newPass;
+    cout <<"Podaj nowe haslo: ";
+    newPass = GeneralMethods::insertTextLine();
+
+    for (vector<User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getId() == logedInUserId)
+            itr -> setPassword(newPass);
+    }
+    usersFile.saveUsersVectorToFile(users);
+
+}

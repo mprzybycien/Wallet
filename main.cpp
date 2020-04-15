@@ -2,27 +2,11 @@
 #include "MyFinances.h"
 
 using namespace std;
-/*
-int main()
-{
-    MyFinances myFinances ("Users.xml");
-    //myFinances.registration();
-    myFinances.logIn();
-    //myFinances.addNewIncome();
-    //myFinances.addNewIncome();
-    //myFinances.addNewExpense();
-    //myFinances.addNewExpense();
-    //myFinances.showCurrentMonthBalance();
-    //myFinances.showPreviousMonthBalance();
-    myFinances.showSelectedPeroidBalance();
 
-    return 0;
-}
-*/
 int main()
 {
     MyFinances myFinances ("Users.xml");
-    int loginChoice, menuChoice;
+    int choice;
     while(true)
     {
         system("cls");
@@ -33,8 +17,8 @@ int main()
         cout << "9. Zakoncz program" <<endl;
         cout << "_______________________" << endl;
         cout << "Wybierz opcje:" << endl;
-        cin >> loginChoice;
-        switch(loginChoice)
+        cin >> choice;
+        switch(choice)
         {
         case 1:
             myFinances.registration();
@@ -55,8 +39,8 @@ int main()
                 cout << "9. Wyloguj sie" <<endl;
                 cout << "_______________________" << endl;
                 cout << "Wybierz opcje:" << endl;
-                cin >> menuChoice;
-                switch(menuChoice)
+                cin >> choice;
+                switch(choice)
                 {
                 case 1:
                     myFinances.addNewIncome();
@@ -73,9 +57,9 @@ int main()
                 case 5:
                     myFinances.showSelectedPeroidBalance();
                     break;
-                //case 6:
-                //    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
-                //    break;
+                case 6:
+                    myFinances.changePassword();
+                    break;
                 case 9:
                     myFinances.logOut();
                     break;

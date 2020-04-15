@@ -2,6 +2,7 @@
 #include "User.h"
 #include "vector"
 #include <cstdlib>
+#include <fstream>
 #include <windows.h>
 #include "Markup.h"
 
@@ -65,3 +66,40 @@ vector <User> UsersFile::loadUsersFromFile()
     }
     return users;
 }
+
+void UsersFile::saveUsersVectorToFile (vector <User> &users)
+{
+    User user;
+    removeFile(usersFileName);
+
+    system("pause");
+    CMarkup *tempXml;
+
+    tempXml = new CMarkup;
+
+    tempXml -> AddElem("Users");
+    tempXml -> FindElem("Users");
+    tempXml -> IntoElem();
+
+    for (vector<User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        tempXml -> AddElem("User");
+        tempXml -> IntoElem();
+        tempXml -> AddElem("userId", itr -> getId());
+        tempXml -> AddElem("userName", itr -> getName());
+        tempXml -> AddElem("userSurname", itr -> getSurname());
+        tempXml -> AddElem("userLogin", itr -> getLogin());
+        tempXml -> AddElem("userPassword", itr -> getPassword());
+        tempXml -> OutOfElem();
+    }
+    tempXml -> Save(usersFileName.c_str());
+    delete tempXml;
+}
+
+void UsersFile::removeFile(string usersFileName)
+{
+    if (remove(usersFileName.c_str()) == 0) {}
+    else
+        cout << "Nie udalo sie usunac pliku " << usersFileName << endl;
+}
+
