@@ -121,3 +121,11 @@ int UserManager::getLogedInUserId()
 {
     return logedInUserId;
 }
+
+void UserManager::setZeroAsLogedInUserId()
+{
+    logedInUserId = 0;
+    system("cls");
+    cout << "Poprawnie wylogowano." << endl;
+    system("pause");
+}

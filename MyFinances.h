@@ -32,6 +32,8 @@ class MyFinances
     void showPreviousMonthBalance();
     void showSelectedPeroidBalance();
 
+    bool isUserLogedIn();
+    void logOut();
 };
 
 #endif

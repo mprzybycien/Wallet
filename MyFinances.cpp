@@ -18,6 +18,11 @@ void MyFinances::logIn()
     }
 }
 
+bool MyFinances::isUserLogedIn()
+{
+    userManager.isUserLogedIn();
+}
+
 void MyFinances::addNewIncome()
 {
     transactionManager -> addNewIncome();
@@ -41,4 +46,11 @@ void MyFinances::showPreviousMonthBalance()
 void MyFinances::showSelectedPeroidBalance()
 {
     transactionManager -> showSelectedPeroidBalance();
+}
+
+void MyFinances::logOut()
+{
+    userManager.setZeroAsLogedInUserId();
+    delete transactionManager;
+    transactionManager = NULL;
 }

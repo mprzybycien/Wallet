@@ -29,6 +29,7 @@ class UserManager
     void registration();
     int logIn();
     int getLogedInUserId();
+    void setZeroAsLogedInUserId();
 };
 
 #endif
