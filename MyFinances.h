@@ -19,7 +19,6 @@ class MyFinances
     userManager(usersFileName),
     INCOMES_FILE_NAME(incomesFileName),
     EXPENSES_FILE_NAME(expensesFileName)
-
     {
         transactionManager = NULL;
     };
