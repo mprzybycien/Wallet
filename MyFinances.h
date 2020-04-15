@@ -11,9 +11,15 @@ class MyFinances
 {
     UserManager userManager;
     TransactionManager *transactionManager;
+    const string INCOMES_FILE_NAME;
+    const string EXPENSES_FILE_NAME;
 
     public:
-    MyFinances(string usersFileName):userManager(usersFileName)
+    MyFinances(string usersFileName, string incomesFileName, string expensesFileName):
+    userManager(usersFileName),
+    INCOMES_FILE_NAME(incomesFileName),
+    EXPENSES_FILE_NAME(expensesFileName)
+
     {
         transactionManager = NULL;
     };

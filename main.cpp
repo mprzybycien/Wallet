@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    MyFinances myFinances ("Users.xml");
+    MyFinances myFinances ("Users.xml", "Incomes.xml", "Expenses.xml");
     int choice;
     while(true)
     {

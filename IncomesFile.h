@@ -10,6 +10,7 @@ using namespace std;
 
 class IncomesFile
 {
+    const string INCOMES_FILE_NAME;
     CMarkup xml;
     int lastIncomeId;
 
@@ -17,7 +18,7 @@ public:
     void appendIncomeToFile(Income income);
     vector <Income> loadLogedInUserIncomes(int logedInUserId);
 
-    IncomesFile()
+    IncomesFile(string INCOMESFILENAME) : INCOMES_FILE_NAME (INCOMESFILENAME)
     {
         lastIncomeId = 0;
     };

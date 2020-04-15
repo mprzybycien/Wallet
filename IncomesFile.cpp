@@ -2,7 +2,7 @@
 
 void IncomesFile::appendIncomeToFile(Income income)
 {
-    bool fileExists = xml.Load("Incomes.xml");
+    bool fileExists = xml.Load(INCOMES_FILE_NAME.c_str());
     if(!fileExists)
     {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
@@ -18,14 +18,14 @@ void IncomesFile::appendIncomeToFile(Income income)
     xml.AddElem("title", income.getTitle());
     xml.AddElem("amount", GeneralMethods::convertFloatToString(income.getAmount()));
 
-    xml.Save("Incomes.xml");
+    xml.Save(INCOMES_FILE_NAME.c_str());
 }
 
 vector <Income> IncomesFile::loadLogedInUserIncomes(int logedInUserId)
 {
     Income income;
     vector <Income> incomes;
-    bool fileExists = xml.Load("Incomes.xml");
+    bool fileExists = xml.Load(INCOMES_FILE_NAME.c_str());
     if(!fileExists)
     {
         cout << "Plik z przychodami jeszcze nie istnieje." << endl;;

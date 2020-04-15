@@ -2,7 +2,7 @@
 
 void ExpensesFile::appendExpenseToFile(Expense expense)
 {
-    bool fileExists = xml.Load("Expenses.xml");
+    bool fileExists = xml.Load(EXPENSES_FILE_NAME.c_str());
     if(!fileExists)
     {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
@@ -18,14 +18,14 @@ void ExpensesFile::appendExpenseToFile(Expense expense)
     xml.AddElem("title", expense.getTitle());
     xml.AddElem("amount", GeneralMethods::convertFloatToString(expense.getAmount()));
 
-    xml.Save("Expenses.xml");
+    xml.Save(EXPENSES_FILE_NAME.c_str());
 }
 
 vector <Expense> ExpensesFile::loadLogedInUserExpenses(int logedInUserId)
 {
     Expense expense;
     vector <Expense> expenses;
-    bool fileExists = xml.Load("Expenses.xml");
+    bool fileExists = xml.Load(EXPENSES_FILE_NAME.c_str());
     if(!fileExists)
     {
         cout << "Plik z wydatkami jeszcze nie istnieje." << endl;;

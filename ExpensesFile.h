@@ -10,6 +10,7 @@ using namespace std;
 
 class ExpensesFile
 {
+    const string EXPENSES_FILE_NAME;
     int lastExpenseId;
     CMarkup xml;
 
@@ -17,7 +18,7 @@ public:
     void appendExpenseToFile(Expense expense);
     vector <Expense> loadLogedInUserExpenses(int logedInUserId);
 
-    ExpensesFile()
+    ExpensesFile(string EXPENSESFILENAME) : EXPENSES_FILE_NAME(EXPENSESFILENAME)
     {
         lastExpenseId = 0;
     };
