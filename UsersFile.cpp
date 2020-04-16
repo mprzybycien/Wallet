@@ -8,7 +8,7 @@
 
 void UsersFile::appendUserToFile(User user)
 {
-    bool fileExists = xml.Load(usersFileName.c_str());
+    bool fileExists = xml.Load(USERS_FILE_NAME.c_str());
     if(!fileExists)
     {
         xml.AddElem("Users");
@@ -23,7 +23,7 @@ void UsersFile::appendUserToFile(User user)
     xml.AddElem("userLogin", user.getLogin());
     xml.AddElem("userPassword", user.getPassword());
 
-    xml.Save(usersFileName.c_str());
+    xml.Save(USERS_FILE_NAME.c_str());
 }
 
 vector <User> UsersFile::loadUsersFromFile()
@@ -31,7 +31,7 @@ vector <User> UsersFile::loadUsersFromFile()
     User user;
     vector <User> users;
 
-    bool fileExists = xml.Load(usersFileName.c_str());
+    bool fileExists = xml.Load(USERS_FILE_NAME.c_str());
     if(!fileExists)
     {
         cout << "Plik nie istnieje." << endl;
@@ -69,9 +69,7 @@ vector <User> UsersFile::loadUsersFromFile()
 
 void UsersFile::saveUsersVectorToFile (vector <User> &users)
 {
-    removeFile(usersFileName.c_str());
-
-    system("pause");
+    removeFile(USERS_FILE_NAME.c_str());
     CMarkup *tempXml;
 
     tempXml = new CMarkup;
@@ -91,14 +89,14 @@ void UsersFile::saveUsersVectorToFile (vector <User> &users)
         tempXml -> AddElem("userPassword", itr -> getPassword());
         tempXml -> OutOfElem();
     }
-    tempXml -> Save(usersFileName.c_str());
+    tempXml -> Save(USERS_FILE_NAME.c_str());
     delete tempXml;
 }
 
-void UsersFile::removeFile(string usersFileName)
+void UsersFile::removeFile(string USERS_FILE_NAME)
 {
-    if (remove(usersFileName.c_str()) == 0) {}
+    if (remove(USERS_FILE_NAME.c_str()) == 0) {}
     else
-        cout << "Nie udalo sie usunac pliku " << usersFileName.c_str() << endl;
+        cout << "Nie udalo sie usunac pliku " << USERS_FILE_NAME.c_str() << endl;
 }
 

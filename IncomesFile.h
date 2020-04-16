@@ -1,26 +1,26 @@
 #ifndef INCOMESFILE_H
 #define INCOMESFILE_H
 #include <iostream>
-#include "income.h"
+#include <vector>
+#include "Income.h"
 #include "Markup.h"
-#include "vector"
 #include "GeneralMethods.h"
+#include "TextFile.h"
 
 using namespace std;
 
-class IncomesFile
+class IncomesFile : public TextFile
 {
-    CMarkup xml;
+    const string INCOMES_FILE_NAME;
     int lastIncomeId;
 
 public:
-    void appendIncomeToFile(Income income);
-    vector <Income> loadLogedInUserIncomes(int logedInUserId);
-
-    IncomesFile()
+    IncomesFile(string INCOMESFILENAME) : INCOMES_FILE_NAME (INCOMESFILENAME)
     {
         lastIncomeId = 0;
     };
+    void appendIncomeToFile(Income income);
+    vector <Income> loadLogedInUserIncomes(int logedInUserId);
     int getLastIncomeId();
     void setLastIncomeId(int newLastIncomeId);
 };

@@ -46,9 +46,14 @@ class TransactionManager
     void showExpensesDetailsOfLogInUserSortedByDate(vector <Transaction> &tempExpenses);
     vector <Transaction> writeIncomesFromSpecifiedPeriodToTempVector(int earlyDate, int lateDate);
     vector <Transaction> writeExpensesFromSpecifiedPeriodToTempVector(int earlyDate, int lateDate);
+    void showSumOfTransactions(vector <Transaction> tempIncomes, vector <Transaction> tempExpenses);
 
 public:
-    TransactionManager (int logedInUserId) : LOGED_IN_USER_ID(logedInUserId)
+    TransactionManager (string incomesFileName, string expensesFileName, int logedInUserId):
+        incomesFile(incomesFileName),
+        expensesFile(expensesFileName),
+        LOGED_IN_USER_ID(logedInUserId)
+
     {
         incomes = incomesFile.loadLogedInUserIncomes(LOGED_IN_USER_ID);
         expenses = expensesFile.loadLogedInUserExpenses(LOGED_IN_USER_ID);

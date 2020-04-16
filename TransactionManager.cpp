@@ -4,6 +4,7 @@ using namespace std;
 
 void TransactionManager::addNewIncome()
 {
+    system("cls");
     Income income;
     cout <<">> DODAJ NOWY PRZYCHOD <<" << endl;
     cout <<"_________________________________________________________" << endl;
@@ -20,18 +21,17 @@ void TransactionManager::addNewIncome()
     cout << ">> PODSUMOWANIE - PRZYCHOD <<" << endl;
     cout << "_________________________________________________________" << endl;
     cout << "Data: " << fullDate << endl;
-    cout << "Kwota: " << income.getAmount() << " PLN" << endl;
+    cout << "Kwota: " << std::fixed << setprecision(2) << income.getAmount() << " PLN" << endl;
     cout << "Tytul: " << income.getTitle() << endl;
     cout << "_________________________________________________________" << endl;
     cout << "Kliknij na klawaiturze 't' aby dodac na stale tranakcje lub dowolny inny klawisz aby anulowac" << endl;
     char choice = getch();
-
     if (choice == 't')
     {
         incomes.push_back(income);
         incomesFile.setLastIncomeId(income.getId());
         incomesFile.appendIncomeToFile(income);
-        cout << "Poprawnie dodano nowa transakcje." << endl;
+        cout << endl << "Poprawnie dodano nowa transakcje." << endl;
     }
     else
         cout << "Nie dodano transakcji." << endl;
@@ -40,6 +40,7 @@ void TransactionManager::addNewIncome()
 
 void TransactionManager::addNewExpense()
 {
+    system("cls");
     Expense expense;
     cout <<">> DODAJ NOWY WYDATEK <<" << endl;
     cout <<"_________________________________________________________" << endl;
@@ -56,7 +57,7 @@ void TransactionManager::addNewExpense()
     cout << ">> PODSUMOWANIE - WYDATEK <<" << endl;
     cout << "_________________________________________________________" << endl;
     cout << "Data: " << fullDate << endl;
-    cout << "Kwota: " << expense.getAmount() << " PLN" << endl;
+    cout << "Kwota: " << std::fixed << setprecision(2) << expense.getAmount() << " PLN" << endl;
     cout << "Tytul: " << expense.getTitle() << endl;
     cout << "_________________________________________________________" << endl;
     cout << "Kliknij na klawaiturze 't' aby dodac na stale transakcje lub dowolny inny klawisz aby anulowac" << endl;
@@ -67,13 +68,12 @@ void TransactionManager::addNewExpense()
         expenses.push_back(expense);
         expensesFile.setLastExpenseId(expense.getId());
         expensesFile.appendExpenseToFile(expense);
-        cout << "Poprawnie dodano nowa transakcje." << endl;
+        cout << endl << "Poprawnie dodano nowa transakcje." << endl;
     }
     else
         cout << "Nie dodano transakcji." << endl;
     system("pause");
 }
-
 
 int TransactionManager::todaysOrOtherData()
 {
@@ -355,15 +355,17 @@ void TransactionManager::showIncomesDetailsOfLogInUserSortedByDate(vector <Trans
     Transaction transaction;
     tempIncomes = transaction.sortLogedInUserTransactions(tempIncomes);
 
+    cout << " ________________________________________________" << endl;
+    cout << " >> Przychody wg daty <<" << endl;
+    cout << " ________________________________________________" << endl;
+
     for (vector<Transaction>::iterator itr = tempIncomes.begin(); itr != tempIncomes.end(); itr++)
     {
-        cout << itr -> getId() << "; " <<
-        itr -> getUserId() << "; " <<
-        changeIntDateToFullDate(itr -> getDate()) << "; "<<
-        itr -> getTitle() << "; "<<
-        std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
+        cout << "__" << endl;
+        cout << "Data: " << changeIntDateToFullDate(itr -> getDate()) << endl;
+        cout << "Tytul: " << itr -> getTitle() << endl;
+        cout << "Kwota: " << std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
     }
-    system ("pause");
 }
 
 void TransactionManager::showExpensesDetailsOfLogInUserSortedByDate(vector <Transaction> &tempExpenses)
@@ -371,15 +373,17 @@ void TransactionManager::showExpensesDetailsOfLogInUserSortedByDate(vector <Tran
     Transaction transaction;
     tempExpenses = transaction.sortLogedInUserTransactions(tempExpenses);
 
+    cout << " ________________________________________________" << endl;
+    cout << " >> Wydatki wg daty <<" << endl;
+    cout << " ________________________________________________" << endl;
+
     for (vector<Transaction>::iterator itr = tempExpenses.begin(); itr != tempExpenses.end(); itr++)
     {
-        cout << itr -> getId() << "; " <<
-        itr -> getUserId() << "; " <<
-        changeIntDateToFullDate(itr -> getDate()) << "; "<<
-        itr -> getTitle() << "; "<<
-        std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
+        cout << "__" << endl;
+        cout << "Data: " << changeIntDateToFullDate(itr -> getDate()) << endl;
+        cout << "Tytul: " << itr -> getTitle() << endl;
+        cout << "Kwota: " << std::fixed << setprecision(2) <<  itr -> getAmount() << " PLN" << endl;
     }
-    system ("pause");
 }
 
 vector <Transaction> TransactionManager::writeIncomesFromSpecifiedPeriodToTempVector(int earlyDate, int lateDate)
@@ -408,6 +412,18 @@ vector <Transaction> TransactionManager::writeExpensesFromSpecifiedPeriodToTempV
     return tempExpenses;
 }
 
+void TransactionManager::showSumOfTransactions(vector <Transaction> tempIncomes, vector <Transaction> tempExpenses)
+{
+    float sumOfIncomes = 0, sumOfExpenses = 0;
+    for (vector<Transaction>::iterator itr = tempIncomes.begin(); itr != tempIncomes.end(); itr++)
+        sumOfIncomes += itr -> getAmount();
+
+    for (vector<Transaction>::iterator itr = tempExpenses.begin(); itr != tempExpenses.end(); itr++)
+        sumOfExpenses -= itr -> getAmount();
+    cout << "Suma przychodow: " << sumOfIncomes << std::fixed << setprecision(2) << "PLN" << endl;
+    cout << "Suma wydatkow: " << sumOfExpenses << std::fixed << setprecision(2) << "PLN" << endl;
+}
+
 void TransactionManager::showCurrentMonthBalance()
 {
     string date = changeIntDateToFullDate(getActualDateFromSystem());
@@ -419,8 +435,12 @@ void TransactionManager::showCurrentMonthBalance()
     vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
     vector <Transaction> tempExpenses = writeExpensesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
 
+    system ("cls");
+    cout << "Suma transakcji z bierzacego miesiaca: " << endl << endl;
+    showSumOfTransactions(tempIncomes, tempExpenses);
     showIncomesDetailsOfLogInUserSortedByDate(tempIncomes);
     showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
+    system("pause");
 }
 
 void TransactionManager::showPreviousMonthBalance()
@@ -465,23 +485,33 @@ void TransactionManager::showPreviousMonthBalance()
     vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
     vector <Transaction> tempExpenses = writeExpensesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
 
+    system ("cls");
+    cout << "Suma transakcji z poprzedniego miesiaca: " << endl << endl;
+    showSumOfTransactions(tempIncomes, tempExpenses);
     showIncomesDetailsOfLogInUserSortedByDate(tempIncomes);
     showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
+    system ("pause");
 }
 
 void TransactionManager::showSelectedPeroidBalance()
 {
     int earlyDate, lateDate;
 
-    cout << ">> DATA POCZATKOWA <<" << endl;
+    cout << endl << ">> DATA POCZATKOWA <<";
     earlyDate = enterDate();
 
-    cout << ">> DATA KONCOWA <<" << endl;
+    cout << endl << ">> DATA KONCOWA <<";
     lateDate = enterDate();
 
     vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
     vector <Transaction> tempExpenses = writeExpensesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);
 
+    system ("cls");
+    cout << "Suma transakcji z przedzialu od " << changeIntDateToFullDate(earlyDate) << " do " << changeIntDateToFullDate(lateDate) << ":" << endl << endl;
+    showSumOfTransactions(tempIncomes, tempExpenses);
     showIncomesDetailsOfLogInUserSortedByDate(tempIncomes);
     showExpensesDetailsOfLogInUserSortedByDate(tempExpenses);
+    system ("pause");
 }
+
+

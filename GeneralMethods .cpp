@@ -34,25 +34,6 @@ int GeneralMethods::convertStringToInt(string integer)
     return convInteger;
 }
 
-char GeneralMethods::loadCharacter()
-{
-    string ins = "";
-    char character  = {0};
-
-    while (true)
-    {
-        getline(cin, ins);
-
-        if (ins.length() == 1)
-        {
-            character = ins[0];
-            break;
-        }
-        cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
-    }
-    return character;
-}
-
 string GeneralMethods::replaceFirstLetterUpperRemainsLower(string text)
 {
     if (!text.empty())

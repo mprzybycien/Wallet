@@ -12,13 +12,18 @@ void MyFinances::logIn()
     userManager.logIn();
     if (userManager.isUserLogedIn())
     {
-        transactionManager = new TransactionManager (userManager.getLogedInUserId());
+        transactionManager = new TransactionManager (INCOMES_FILE_NAME, EXPENSES_FILE_NAME, userManager.getLogedInUserId());
     }
 }
 
 bool MyFinances::isUserLogedIn()
 {
     userManager.isUserLogedIn();
+}
+
+string MyFinances::showDataOfLogInUser()
+{
+    return userManager.showDataOfLogInUser();
 }
 
 void MyFinances::addNewIncome()

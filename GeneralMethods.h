@@ -15,7 +15,6 @@ public:
     static string convertIntToString(int integer);
     static string convertFloatToString(float float_);
     static int convertStringToInt(string integer);
-    static char loadCharacter();
     static string replaceFirstLetterUpperRemainsLower(string text);
 };
 
