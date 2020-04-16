@@ -15,13 +15,12 @@ class ExpensesFile
     CMarkup xml;
 
 public:
-    void appendExpenseToFile(Expense expense);
-    vector <Expense> loadLogedInUserExpenses(int logedInUserId);
-
     ExpensesFile(string EXPENSESFILENAME) : EXPENSES_FILE_NAME(EXPENSESFILENAME)
     {
         lastExpenseId = 0;
     };
+    void appendExpenseToFile(Expense expense);
+    vector <Expense> loadLogedInUserExpenses(int logedInUserId);
     int getLastExpenseId();
     void setLastExpenseId(int newLastExpenseId);
 };

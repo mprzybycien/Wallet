@@ -10,15 +10,13 @@ using namespace std;
 
 class UsersFile
 {
-    const string usersFileName;
+    const string USERS_FILE_NAME;
     CMarkup xml;
-
-
 public:
-    UsersFile(string USERSFILENAME) : usersFileName (USERSFILENAME) {};
+    UsersFile(string USERSFILENAME) : USERS_FILE_NAME (USERSFILENAME) {};
     void appendUserToFile(User user);
     vector <User> loadUsersFromFile();
-    void removeFile(string usersFileName);
+    void removeFile(string USERS_FILE_NAME);
     void saveUsersVectorToFile (vector <User> &users);
 };
 

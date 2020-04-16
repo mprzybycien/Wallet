@@ -15,13 +15,12 @@ class IncomesFile
     int lastIncomeId;
 
 public:
-    void appendIncomeToFile(Income income);
-    vector <Income> loadLogedInUserIncomes(int logedInUserId);
-
     IncomesFile(string INCOMESFILENAME) : INCOMES_FILE_NAME (INCOMESFILENAME)
     {
         lastIncomeId = 0;
     };
+    void appendIncomeToFile(Income income);
+    vector <Income> loadLogedInUserIncomes(int logedInUserId);
     int getLastIncomeId();
     void setLastIncomeId(int newLastIncomeId);
 };
