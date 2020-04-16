@@ -128,7 +128,6 @@
     <panel_attributes>UserFile
 --
 - USERS_FILE_NAME:const string
-- xml:CMarkup
 --
 + appendUserToFile(User user):void
 + loadUsersFromFile():vector &lt;User&gt;
@@ -192,7 +191,6 @@
     <panel_attributes>IncomesFile
 --
 - INCOMES_FILE_NAME:const string
-- xml:CMarkup
 - lastIncomeId:int
 --
 + appendIncomeToFile():void
@@ -212,7 +210,6 @@
     <panel_attributes>ExpensesFile
 --
 - EXPENSES_FILE_NAME:const string
-- xml:CMarkup
 - lastExpenseId:int
 --
 + appendExpenseToFile():void
@@ -446,5 +443,53 @@ bg=black</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1310</x>
+      <y>580</y>
+      <w>230</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>TextFile
+--
+
+--
++ xml:CMarkup</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1460</x>
+      <y>670</y>
+      <w>30</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>670</y>
+      <w>280</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>260.0;10.0;260.0;110.0;10.0;110.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1130</x>
+      <y>440</y>
+      <w>300</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0;280.0;140.0</additional_attributes>
   </element>
 </diagram>

@@ -1,17 +1,17 @@
 #ifndef INCOMESFILE_H
 #define INCOMESFILE_H
 #include <iostream>
-#include "income.h"
+#include <vector>
+#include "Income.h"
 #include "Markup.h"
-#include "vector"
 #include "GeneralMethods.h"
+#include "TextFile.h"
 
 using namespace std;
 
-class IncomesFile
+class IncomesFile : public TextFile
 {
     const string INCOMES_FILE_NAME;
-    CMarkup xml;
     int lastIncomeId;
 
 public:

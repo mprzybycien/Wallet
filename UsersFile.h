@@ -1,17 +1,16 @@
 #ifndef USERSFILE_H
 #define USERSFILE_H
 #include <iostream>
+#include <vector>
 #include "User.h"
 #include "Markup.h"
-#include "vector"
-
+#include "TextFile.h"
 
 using namespace std;
 
-class UsersFile
+class UsersFile : public TextFile
 {
     const string USERS_FILE_NAME;
-    CMarkup xml;
 public:
     UsersFile(string USERSFILENAME) : USERS_FILE_NAME (USERSFILENAME) {};
     void appendUserToFile(User user);
