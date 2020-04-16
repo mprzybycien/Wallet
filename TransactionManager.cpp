@@ -37,7 +37,18 @@ void TransactionManager::addNewIncome()
         cout << "Nie dodano transakcji." << endl;
     system("pause");
 }
+/*
+Transaction TransactionManager::enterNewTransactionData()
+{
+    Transaction transaction;
 
+    income.setId(incomesFile.getLastIncomeId()+1);
+    income.setUserId(LOGED_IN_USER_ID);
+    income.setDate(todaysOrOtherData());
+    income.setAmount(enterAmount());
+    income.setTitle(enterIncomeTitle());
+}
+*/
 void TransactionManager::addNewExpense()
 {
     system("cls");
@@ -497,10 +508,10 @@ void TransactionManager::showSelectedPeroidBalance()
 {
     int earlyDate, lateDate;
 
-    cout << ">> DATA POCZATKOWA <<" << endl;
+    cout << endl << ">> DATA POCZATKOWA <<";
     earlyDate = enterDate();
 
-    cout << ">> DATA KONCOWA <<" << endl;
+    cout << endl << ">> DATA KONCOWA <<";
     lateDate = enterDate();
 
     vector <Transaction> tempIncomes = writeIncomesFromSpecifiedPeriodToTempVector(earlyDate, lateDate);

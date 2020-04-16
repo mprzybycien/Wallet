@@ -40,7 +40,6 @@ User UserManager::enterNewUserData()
     cout << "Podaj haslo: ";
     password = GeneralMethods::insertTextLine();
     user.setPassword(password);
-
     return user;
 }
 
